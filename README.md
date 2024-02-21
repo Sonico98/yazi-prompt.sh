@@ -1,5 +1,5 @@
 # Introduction
-Users making use of the [dropping to the shell](https://yazi-rs.github.io/docs/tips/#dropping-to-the-shell) tip may want to display an indicator to easily know they're inside a yazi subshell. The following are simple instructions needed to accomplish that.
+[Yazi](https://yazi-rs.github.io/) users making use of the [dropping to the shell](https://yazi-rs.github.io/docs/tips/#dropping-to-the-shell) tip may want to display an indicator to easily know they're inside a yazi subshell. The following are simple instructions needed to accomplish that.
 
 # Instructions
 ### Bash / Zsh
@@ -12,7 +12,7 @@ fi
 PS1="$PS1$YAZI_TERM"
 ```
 ### Powerlevel10k (Zsh)
-If using powerlevel10k, you may add the following after the function prompt_example in ~/.p10k.zsh:
+If using powerlevel10k, you may add the following after the function prompt_example in ~/.p10k.zsh instead:
 ```
 function prompt_yazi() {
     if [ -n "$YAZI_LEVEL" ]; then
@@ -22,7 +22,7 @@ function prompt_yazi() {
 ```
 Then add `yazi` to `POWERLEVEL9K_LEFT_PROMPT_ELEMENTS` or `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS`, near the top of ~/.p10k.zsh.
 ### Fish
-It's a bit trickier to apply a genral solution to fish.
+It's a bit trickier to apply a genral solution to fish. If someone knows a better way of doing this, please open a Pull Request.
 Open a fish shell and execute `funced fish_prompt`. This will open up your text editor. Add the following near the end of the file, inside the fish_prompt function, before any echo or printf calls: 
 ```
 if test -n "$YAZI_LEVEL"
@@ -44,4 +44,17 @@ end
 ```
 
 # Screenshots
+This is what you can expect if using the default prompts for each shell.
+
+### Bash
+![bash](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/05f8c124-c428-4b12-ac04-a4da98bbe06a)
+
+### Zsh
+![zsh](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/a2f693c7-3c82-4294-ac26-665def2e4a54)
+
+### Fish
+![fish](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/7463296b-74df-48f9-b013-6d8e7c72b131)
+
+### Zsh (Powerlevel10k)
+![p10k](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/650b977f-d215-4b93-957c-191a4313a897)
 
