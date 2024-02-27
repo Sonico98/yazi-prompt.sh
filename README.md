@@ -43,6 +43,36 @@ As an example, this is how the end of the file looks for the default fish prompt
 end
 ```
 
+#### Fish with tide
+If you use fish  with [tide](https://github.com/IlanCosman/tide) here is a way to end up with a nice prompt:
+
+- Create the file `~/.config/fish/functions/_tide_item_yazi.fish`
+
+```shell
+function _tide_item_yazi
+    if test -n "$YAZI_LEVEL"
+        _tide_print_item yazi ' Yazi terminal'
+    end
+end
+```
+
+- Run the following commands to add color to the prompt:
+**NOTE**: You can pick whatever colors you are interested in
+
+```shell
+set --universal tide_yazi_bg_color brblack
+set --universal tide_yazi_color black
+```
+
+- Add `yazi-prompt` to the tide_left_prompt:
+**NOTE**: Adjust it to your `tide_left_prompt`
+
+```shell
+set --universal tide_left_prompt_items os yazi context pwd git newline character
+```
+
+- Reload `tide reload`
+
 # Screenshots
 This is what you can expect if using the default prompts for each shell.
 
