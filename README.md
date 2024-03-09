@@ -7,50 +7,52 @@ If your shell theme is not listed below and requires specific instructions to wo
 <details>
 <summary>Default prompt</summary>
 
-Add the following at the end of your ~/.bashrc file:
+Copy and paste this into a terminal:
 
+```sh
+git clone https://github.com/Sonico98/yazi-prompt.sh ./yazi-prompt && \
+chmod +x ./yazi-prompt/posix/yazi.sh && \
+cp ./yazi-prompt/posix/yazi.sh  ~/.yazi.sh && \
+echo '''source ~/.yazi.sh''' >> ~/.bashrc && \
+rm -rf ./yazi-prompt
 ```
-YAZI_TERM=""
-if [ -n "$YAZI_LEVEL" ]; then
-	YAZI_TERM="|  Yazi terminal: "
-fi
-PS1="$PS1$YAZI_TERM"
-```
+
+Then open a new shell or run `source ~/.bashrc`.
 </details>
 
 ##  Zsh
 <details>
 <summary>Default prompt</summary>
 
-Add the following at the end of your ~/.zshrc file:
+Copy and paste this into a terminal:
 
+```sh
+git clone https://github.com/Sonico98/yazi-prompt.sh ./yazi-prompt && \
+chmod +x ./yazi-prompt/posix/yazi.sh && \
+cp ./yazi-prompt/posix/yazi.sh  "$ZDOTDIR"/.yazi.sh && \
+echo '''source "$ZDOTDIR"/.yazi.sh''' >> "$ZDOTDIR"/.zshrc && \
+rm -rf ./yazi-prompt
 ```
-YAZI_TERM=""
-if [ -n "$YAZI_LEVEL" ]; then
-	YAZI_TERM="|  Yazi terminal: "
-fi
-PS1="$PS1$YAZI_TERM"
-```
+
+Then open a new shell or run `source "$ZDOTDIR"/.zshrc`.
 </details>
 
 <details>
 <summary>Powerlevel10k</summary>
 
-If using [powerlevel10k](https://github.com/romkatv/powerlevel10k), you may add the following after the function prompt_example in ~/.p10k.zsh instead:
+If using [powerlevel10k](https://github.com/romkatv/powerlevel10k), copy and paste this into a terminal:
 
+```sh
+git clone https://github.com/Sonico98/yazi-prompt.sh ./yazi-prompt && \
+chmod +x ./yazi-prompt/zsh/p10k/yazi_p10k.zsh && \
+cp ./yazi-prompt/zsh/p10k/yazi_p10k.zsh "$ZDOTDIR"/.yazi_p10k.zsh && \
+sed 's/  # If p10k is already loaded, reload configuration./  source "$ZDOTDIR"\/.yazi_p10k.zsh¿  # If p10k is already loaded, reload configuration./' ~/.p10k.zsh | tr '¿' '\n' >| ~/.p10k.zsh.tmp && yes | mv ~/.p10k.zsh{.tmp,} && \
+rm -rf ./yazi-prompt
 ```
-function prompt_yazi() {
-    if [ -n "$YAZI_LEVEL" ]; then
-    	p10k segment -f 005 -i '' -t 'Yazi terminal'
-    fi
-}
-```
-Then add `yazi` to `POWERLEVEL9K_LEFT_PROMPT_ELEMENTS` or `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS`, near the top of ~/.p10k.zsh.
 
-005 is the segment color. If you want to change it, you can run this in a terminal to see all available colors: 
-```
-for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
-```
+Then add `yazi` to `POWERLEVEL9K_LEFT_PROMPT_ELEMENTS` or `POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS`, near the top of ~/.p10k.zsh, and open a new shell.
+You can modify the color by editing $ZDOTDIR/.yazi_p10k.zsh
+
 </details>
 
 ## Fish
@@ -86,20 +88,20 @@ end
 
 If you use fish  with [tide](https://github.com/IlanCosman/tide) here is a way to end up with a nice prompt:
 
-- Create the file `~/.config/fish/functions/_tide_item_yazi.fish`
+- Copy and paste the following into a terminal:
 
-```shell
-function _tide_item_yazi
-    if test -n "$YAZI_LEVEL"
-        _tide_print_item yazi ' Yazi terminal'
-    end
-end
+```sh
+git clone https://github.com/Sonico98/yazi-prompt.sh ./yazi-prompt && \
+chmod +x ./yazi-prompt/fish/tide/_tide_item_yazi.fish && \
+mkdir -p ~/.config/fish/functions/ && \
+cp ./yazi-prompt/fish/tide/_tide_item_yazi.fish  ~/.config/fish/functions/_tide_item_yazi.fish && \
+rm -rf ./yazi-prompt
 ```
 
 - Run the following commands to add color to the prompt:
 **NOTE**: You can pick whatever colors you are interested in
 
-```shell
+```sh
 set --universal tide_yazi_bg_color brblack
 set --universal tide_yazi_color black
 ```
@@ -107,11 +109,11 @@ set --universal tide_yazi_color black
 - Add `yazi-prompt` to the tide_left_prompt:
 **NOTE**: Adjust it to your `tide_left_prompt`
 
-```shell
+```sh
 set --universal tide_left_prompt_items os yazi context pwd git newline character
 ```
 
-- Reload `tide reload`
+- Reload: `tide reload`
 </details>
 
 # Screenshots
