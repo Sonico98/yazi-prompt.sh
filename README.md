@@ -46,7 +46,7 @@ If using [powerlevel10k](https://github.com/romkatv/powerlevel10k), copy and pas
 git clone https://github.com/Sonico98/yazi-prompt.sh ./yazi-prompt && \
 chmod +x ./yazi-prompt/zsh/p10k/yazi_p10k.zsh && \
 cp ./yazi-prompt/zsh/p10k/yazi_p10k.zsh "$ZDOTDIR"/.yazi_p10k.zsh && \
-sed 's/  # If p10k is already loaded, reload configuration./  source "$ZDOTDIR"\/.yazi_p10k.zsh¿  # If p10k is already loaded, reload configuration./' ~/.p10k.zsh | tr '¿' '\n' >| ~/.p10k.zsh.tmp && yes | mv ~/.p10k.zsh{.tmp,} && \
+sed 's/  # If p10k is already loaded, reload configuration./  source "$ZDOTDIR"\/.yazi_p10k.zsh×  # If p10k is already loaded, reload configuration./' ~/.p10k.zsh | tr '×' '\n' >| ~/.p10k.zsh.tmp && yes | mv ~/.p10k.zsh{.tmp,} && \
 rm -rf ./yazi-prompt
 ```
 
