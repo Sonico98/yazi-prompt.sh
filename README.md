@@ -1,5 +1,5 @@
 # Introduction
-[Yazi](https://yazi-rs.github.io/) users making use of the [dropping to the shell](https://yazi-rs.github.io/docs/tips/#dropping-to-the-shell) tip may want to display an indicator to easily know they're inside a yazi subshell. The following are simple instructions needed to accomplish that.
+[Yazi](https://yazi-rs.github.io/) users making use of the [dropping to the shell](https://yazi-rs.github.io/docs/tips/#dropping-to-shell) tip may want to display an indicator to easily know they're inside a yazi subshell. The following are simple instructions needed to accomplish that.
 If your shell theme is not listed below and requires specific instructions to work, feel free to submit a PR!
 
 # Instructions
