@@ -116,6 +116,32 @@ set --universal tide_left_prompt_items os yazi context pwd git newline character
 - Reload: `tide reload`
 </details>
 
+<details>
+Add a custom module to your `starship.toml`.
+
+```ini
+[custom.yazi]
+description = "Indicate the shell was launched by `yazi`"
+symbol = " "
+when = """ test -n "$YAZI_LEVEL" """
+```
+
+Include `${custom.yazi}` in your `format`.
+
+```ini
+format = """
+$hostname\
+$shell\
+${custom.yazi}\
+$username\
+$sudo\
+$character\
+"""
+```
+
+</details>
+
+
 # Screenshots
 This is what you can expect to see by following the instructions above:
 
