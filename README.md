@@ -121,7 +121,7 @@ set --universal tide_left_prompt_items os yazi context pwd git newline character
 <details>
 Add a custom module to your `starship.toml`.
 
-```ini
+```toml
 [custom.yazi]
 description = "Indicate the shell was launched by `yazi`"
 symbol = " "
@@ -130,7 +130,7 @@ when = """ test -n "$YAZI_LEVEL" """
 
 Include `${custom.yazi}` in your `format`.
 
-```ini
+```toml
 format = """
 $hostname\
 $shell\
