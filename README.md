@@ -116,6 +116,8 @@ set --universal tide_left_prompt_items os yazi context pwd git newline character
 - Reload: `tide reload`
 </details>
 
+## Starship
+
 <details>
 Add a custom module to your `starship.toml`.
 
