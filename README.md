@@ -177,3 +177,10 @@ This is what you can expect to see by following the instructions above:
 
 ![tide](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/96fa8d43-6d00-4dae-a250-300d2dce104f)
 </details>
+
+## Starship
+<details>
+<summary>Example</summary>
+
+![starship](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/f46a2e45-afec-4672-977b-28ef64065d36)
+</details>
