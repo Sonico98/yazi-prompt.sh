@@ -129,6 +129,7 @@ set --universal tide_left_prompt_items os yazi context pwd git newline character
 ## Starship
 
 <details>
+<summary>starship.toml</summary>
 Add a custom module to your `starship.toml`.
 
 ```toml
@@ -153,9 +154,8 @@ $character\
 
 </details>
 
-## Home Manager
-
 <details>
+<summary>Home Manager</summary>
 Enable starship and configure it in your home-manager configuration file,
 usually `~/.config/home-manager/home.nix`
 
