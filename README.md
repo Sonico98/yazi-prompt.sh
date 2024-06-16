@@ -118,6 +118,7 @@ it doesn't, execute `funcsave fish_prompt`.
 As an example, this is how the end of the file looks for the default fish prompt:
 
 ```fish
+    [...]
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
     if test -n "$YAZI_LEVEL"
       set suffix "  Yazi terminal $suffix"
