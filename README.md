@@ -1,9 +1,12 @@
 # Introduction
+
 [Yazi](https://yazi-rs.github.io/) users making use of the [dropping to the shell](https://yazi-rs.github.io/docs/tips/#dropping-to-shell) tip may want to display an indicator to easily know they're inside a yazi subshell. The following are simple instructions needed to accomplish that.
 If your shell theme is not listed below and requires specific instructions to work, feel free to submit a PR!
 
 # Instructions
+
 ## Bash
+
 <details>
 <summary>Default prompt</summary>
 
@@ -18,9 +21,11 @@ rm -rf ./yazi-prompt
 ```
 
 Then open a new shell or run `source ~/.bashrc`.
+
 </details>
 
-##  Zsh
+## Zsh
+
 <details>
 <summary>Default prompt</summary>
 
@@ -35,6 +40,7 @@ rm -rf ./yazi-prompt
 ```
 
 Then open a new shell or run `source "$ZDOTDIR"/.zshrc`.
+
 </details>
 
 <details>
@@ -56,21 +62,24 @@ You can modify the color by editing $ZDOTDIR/.yazi_p10k.zsh
 </details>
 
 ## Fish
+
 <details>
 <summary>Default prompt</summary>
 
 It's a bit trickier to apply a general solution to fish. If someone knows a better way of doing this, please open a Pull Request.
 
-Open a fish shell and execute `funced fish_prompt`. This will open up your text editor. Add the following near the end of the file, inside the fish_prompt function, before any echo or printf calls: 
+Open a fish shell and execute `funced fish_prompt`. This will open up your text editor. Add the following near the end of the file, inside the fish_prompt function, before any echo or printf calls:
 
 ```
 if test -n "$YAZI_LEVEL"
     set suffix "  Yazi terminal $suffix"
 end
 ```
+
 Make sure `$suffix` is present in the echo or printf line, save the file and exit your editor. Fish should ask you if you want to save the file, confirm. In case it doesn't, execute `funcsave fish_prompt`.
 
 As an example, this is how the end of the file looks for the default fish prompt:
+
 ```
     [...]
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
@@ -81,12 +90,13 @@ As an example, this is how the end of the file looks for the default fish prompt
     echo -n -s (prompt_login)' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$prompt_status $suffix " "
 end
 ```
+
 </details>
 
 <details>
 <summary>Tide</summary>
 
-If you use fish  with [tide](https://github.com/IlanCosman/tide) here is a way to end up with a nice prompt:
+If you use fish with [tide](https://github.com/IlanCosman/tide) here is a way to end up with a nice prompt:
 
 - Copy and paste the following into a terminal:
 
@@ -99,7 +109,7 @@ rm -rf ./yazi-prompt
 ```
 
 - Run the following commands to add color to the prompt:
-**NOTE**: You can pick whatever colors you are interested in
+  **NOTE**: You can pick whatever colors you are interested in
 
 ```sh
 set --universal tide_yazi_bg_color brblack
@@ -107,7 +117,7 @@ set --universal tide_yazi_color black
 ```
 
 - Add `yazi-prompt` to the tide_left_prompt:
-**NOTE**: Adjust it to your `tide_left_prompt`
+  **NOTE**: Adjust it to your `tide_left_prompt`
 
 ```sh
 set --universal tide_left_prompt_items os yazi context pwd git newline character
@@ -119,6 +129,7 @@ set --universal tide_left_prompt_items os yazi context pwd git newline character
 ## Starship
 
 <details>
+<summary>starship.toml</summary>
 Add a custom module to your `starship.toml`.
 
 ```toml
@@ -143,44 +154,81 @@ $character\
 
 </details>
 
+<details>
+<summary>Home Manager</summary>
+Enable starship and configure it in your home-manager configuration file,
+usually `~/.config/home-manager/home.nix`
+
+```nix
+programs.starship = {
+  enable = true;
+  settings = {
+    format = lib.concatStrings [
+      "\${custom.yazi}"
+      "$character"
+    ];
+    right_format = lib.concatStrings [
+      "$all"
+    ];
+    custom.yazi = {
+      description = "Indicate when the shell was launched by `yazi`";
+      symbol = " ";
+      when = '' test -n "$YAZI_LEVEL" '';
+    };
+  };
+};
+```
+
+</details>
 
 # Screenshots
+
 This is what you can expect to see by following the instructions above:
 
 ## Bash
+
 <details>
 <summary>Default prompt</summary>
 
 ![bash](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/05f8c124-c428-4b12-ac04-a4da98bbe06a)
+
 </details>
 
 ## Zsh
+
 <details>
 <summary>Default prompt</summary>
 
 ![zsh](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/a2f693c7-3c82-4294-ac26-665def2e4a54)
+
 </details>
 <details>
 <summary>Powerlevel10k</summary>
 
 ![p10k](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/650b977f-d215-4b93-957c-191a4313a897)
+
 </details>
 
 ## Fish
+
 <details>
 <summary>Default prompt</summary>
 
 ![fish](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/7463296b-74df-48f9-b013-6d8e7c72b131)
+
 </details>
 <details>
 <summary>Tide</summary>
 
 ![tide](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/96fa8d43-6d00-4dae-a250-300d2dce104f)
+
 </details>
 
 ## Starship
+
 <details>
 <summary>Example</summary>
 
 ![starship](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/f46a2e45-afec-4672-977b-28ef64065d36)
+
 </details>
