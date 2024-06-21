@@ -94,10 +94,11 @@ new shell. You can modify the color by editing $ZDOTDIR/.yazi_p10k.zsh
 
   <details>
     <summary>Screenshot</summary>
-
+    
 ![fish](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/7463296b-74df-48f9-b013-6d8e7c72b131)
-
+      
   </details>
+  
 It's a bit trickier to apply a general solution to fish. If someone knows a
 better way of doing this, please open a Pull Request.
 
@@ -135,7 +136,7 @@ end
 
   <details>
     <summary>Screenshot</summary>
-
+    
 ![tide](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/96fa8d43-6d00-4dae-a250-300d2dce104f)
 
   </details>
@@ -176,14 +177,12 @@ Reload: `tide reload`
 
 <details>
   <summary>starship.toml</summary>
-
   <details>
     <summary>Screenshot</summary>
-
+    
 ![starship](https://github.com/Sonico98/yazi-prompt.sh/assets/61394886/f46a2e45-afec-4672-977b-28ef64065d36)
 
   </details>
-
 Add a custom module to your `starship.toml`.
 
 ```toml
@@ -204,6 +203,33 @@ $username\
 $sudo\
 $character\
 """
+```
+
+</details>
+
+<details>
+<summary>Home Manager</summary>
+Enable starship and configure it in your home-manager configuration file,
+usually `~/.config/home-manager/home.nix`
+
+```nix
+programs.starship = {
+  enable = true;
+  settings = {
+    format = lib.concatStrings [
+      "\${custom.yazi}"
+      "$character"
+    ];
+    right_format = lib.concatStrings [
+      "$all"
+    ];
+    custom.yazi = {
+      description = "Indicate when the shell was launched by `yazi`";
+      symbol = " ";
+      when = '' test -n "$YAZI_LEVEL" '';
+    };
+  };
+};
 ```
 
 </details>
