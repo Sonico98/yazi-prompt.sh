@@ -186,10 +186,13 @@ Reload: `tide reload`
 Add a custom module to your `starship.toml`.
 
 ```toml
-[custom.yazi]
+[env_var.yazi_level]
 description = "Indicate the shell was launched by `yazi`"
-symbol = " "
-when = """ test -n "$YAZI_LEVEL" """
+variable = "YAZI_LEVEL"
+# 🦆: U+1f986 Duck
+# Alternatively: " ": U+E795 <Private Use>
+symbol = "🦆"
+format = '[ $symbol ]($style)'
 ```
 
 Include `${custom.yazi}` in your `format`.
@@ -198,7 +201,7 @@ Include `${custom.yazi}` in your `format`.
 format = """
 $hostname\
 $shell\
-${custom.yazi}\
+${env_var.yazi_level}\
 $username\
 $sudo\
 $character\
